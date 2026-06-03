@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "logo": "Jeonghan Lee",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "activities": "Activities",
+    "contact": "Contact"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "label": "Language",
+    "ko": "한국어",
+    "en": "English"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Frontend Engineer",
+    "name": "Jeonghan Lee.",
+    "ctaProjects": "View Projects",
+    "ctaContact": "Get in Touch",
+    "ctaResume": "Download Resume"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "About Me",
+    "highlights": {
+      "projects": "team projects",
+      "activities": "other experience"
+    },
+    "certificationsLabel": "Certifications"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "cowork": "Co-work"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Selected Work",
+    "viewLive": "View Live",
+    "viewCode": "View Code",
+    "viewApp": "Get App",
+    "close": "Close",
+    "role": "Role"
+  },
+  "experience": {
+    "title": "Experience · Education",
+    "subtitle": "Experience",
+    "present": "Present"
+  },
+  "activities": {
+    "title": "Other Experience",
+    "subtitle": "Other Experience",
+    "body": "Learning and collaboration earned through bootcamps and clubs."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "body": "If there's something you'd like to talk about, feel free to reach out.",
+    "email": "Email",
+    "github": "GitHub",
+    "resume": "Resume PDF"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "logo": "이정한",
+    "home": "홈",
+    "about": "소개",
+    "skills": "기술",
+    "projects": "프로젝트",
+    "experience": "경력",
+    "activities": "활동",
+    "contact": "연락"
+  },
+  "theme": {
+    "light": "라이트 모드",
+    "dark": "다크 모드",
+    "system": "시스템 설정"
+  },
+  "language": {
+    "label": "언어",
+    "ko": "한국어",
+    "en": "English"
+  },
+  "hero": {
+    "greeting": "안녕하세요, 저는",
+    "role": "프론트엔드 엔지니어",
+    "name": "이정한입니다.",
+    "ctaProjects": "프로젝트 보기",
+    "ctaContact": "연락하기",
+    "ctaResume": "이력서 다운로드"
+  },
+  "about": {
+    "title": "소개",
+    "subtitle": "About Me",
+    "highlights": {
+      "projects": "팀 프로젝트",
+      "activities": "기타 경험"
+    },
+    "certificationsLabel": "자격증"
+  },
+  "skills": {
+    "title": "기술 스택",
+    "subtitle": "Skills",
+    "categories": {
+      "frontend": "프론트엔드",
+      "cowork": "협업"
+    }
+  },
+  "projects": {
+    "title": "프로젝트",
+    "subtitle": "Selected Work",
+    "viewLive": "라이브 보기",
+    "viewCode": "코드 보기",
+    "viewApp": "앱 설치",
+    "close": "닫기",
+    "role": "역할"
+  },
+  "experience": {
+    "title": "경력 · 학력",
+    "subtitle": "Experience",
+    "present": "현재"
+  },
+  "activities": {
+    "title": "기타 경력 및 경험",
+    "subtitle": "Other Experience",
+    "body": "부트캠프와 동아리 활동에서 얻은 학습과 협업 경험."
+  },
+  "contact": {
+    "title": "연락",
+    "subtitle": "Get in touch",
+    "body": "이야기 나누고 싶은 것이 있다면 편하게 연락 주세요.",
+    "email": "이메일",
+    "github": "GitHub",
+    "resume": "이력서 PDF"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
