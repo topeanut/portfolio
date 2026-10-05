@@ -11,7 +11,7 @@ export function Skills() {
   const t = useTranslations("skills");
   const tCat = useTranslations("skills.categories");
 
-  const grouped = (["frontend", "cowork"] as const).map((category) => ({
+  const grouped = (["frontend", "backend", "cowork"] as const).map((category) => ({
     category,
     items: skills.filter((s) => s.category === category),
   }));

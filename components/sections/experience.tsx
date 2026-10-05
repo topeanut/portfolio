@@ -63,6 +63,13 @@ export function Experience() {
                   <p className="mt-0.5 text-sm text-muted">
                     {e.company[locale]}
                   </p>
+                  {e.bullets && e.bullets.length > 0 && (
+                    <ul className="mt-3 max-w-3xl list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-foreground/80">
+                      {e.bullets.map((b, i) => (
+                        <li key={i}>{b[locale]}</li>
+                      ))}
+                    </ul>
+                  )}
                 </motion.li>
               );
             })}

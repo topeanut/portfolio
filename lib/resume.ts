@@ -10,7 +10,7 @@ export type ResumeProfile = {
 };
 
 export type SkillGroup = {
-  category: "frontend" | "cowork";
+  category: "frontend" | "backend" | "cowork";
   label: LocalizedString;
   items: string[];
 };
@@ -47,6 +47,14 @@ export type ResumeProject = {
   galleryAspect?: "mobile" | "web";
 };
 
+export type WorkExperience = {
+  slug: string;
+  company: LocalizedString;
+  role: LocalizedString;
+  period: { start: string; end?: string };
+  bullets: LocalizedString[];
+};
+
 export type OtherExperience = {
   slug: string;
   title: LocalizedString;
@@ -56,14 +64,14 @@ export type OtherExperience = {
 
 export const profile: ResumeProfile = {
   name: { ko: "이정한", en: "Jeonghan Lee" },
-  role: { ko: "프론트엔드 엔지니어", en: "Frontend Engineer" },
+  role: { ko: "소프트웨어 엔지니어", en: "Software Engineer" },
   phone: "+82 10-2748-1648",
   email: "ljhh1648@gmail.com",
   github: { label: "github.com/topeanut", href: "https://github.com/topeanut" },
   introduction: [
     {
-      ko: "프론트엔드 엔지니어로서 다양한 서비스의 기획·개발·배포를 경험했습니다. 주로 웹 서비스 개발을 담당했으며, 필요에 따라 프론트엔드 파트장을 겸하며 팀을 이끌었습니다.",
-      en: "As a frontend engineer, I've taken services through planning, development, and deployment. Mostly building web services, I've also led the frontend track as part lead when needed.",
+      ko: "웹 프론트엔드에서 시작해 API 서버, 인증, 인프라, 데이터 집계까지 범위를 넓혀 온 소프트웨어 엔지니어입니다. 다양한 서비스의 기획·개발·배포를 경험했고, 필요에 따라 파트장을 겸하며 팀을 이끌었습니다.",
+      en: "A software engineer who started on the web frontend and has expanded into API servers, auth, infrastructure, and data aggregation. I've taken services through planning, development, and deployment, and led teams as part lead when needed.",
     },
     {
       ko: "직군을 넘나드는 협업을 중요하게 생각하며, 다양한 팀원들과 적극적으로 소통하며 프로젝트를 수행해왔습니다.",
@@ -93,6 +101,18 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    category: "backend",
+    label: { ko: "백엔드·인프라", en: "Backend & Infra" },
+    items: [
+      "Spring Boot",
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+      "AWS",
+      "BigQuery",
+    ],
+  },
+  {
     category: "cowork",
     label: { ko: "협업", en: "Co-work" },
     items: ["GitHub", "Slack"],
@@ -111,7 +131,113 @@ export const education: Education[] = [
   },
 ];
 
+export const workExperiences: WorkExperience[] = [
+  {
+    slug: "jeonneung-it",
+    company: { ko: "전능아이티", en: "Jeonneung IT" },
+    role: { ko: "프론트엔드 엔지니어", en: "Frontend Engineer" },
+    period: { start: "2025.04" },
+    bullets: [
+      {
+        ko: "SSR 전환 SEO — CSR 목록 페이지를 지역·카테고리 조합 SSR 페이지로 전환하고 Sitemap·구조화 데이터·noindex 기준을 설계. 검색 유입이 거의 없던 페이지에서 일평균 노출 1,300회·클릭 31회 달성",
+        en: "SSR migration for SEO — converted CSR list pages into region/category SSR pages and designed sitemap, structured data, and noindex rules; pages with almost no search traffic reached ~1,300 daily impressions and 31 daily clicks",
+      },
+      {
+        ko: "API 서버 인증 대행 프록시 — 웹뷰 이관으로 끊긴 쓰기 API 인증을 서명 헤더 기반 프록시 엔드포인트 7개로 연결. 경로 파라미터 검증 파이프와 Jest 테스트 작성, 프로덕션 본인인증 장애 원인 추적·복구",
+        en: "Auth-delegating API proxy — restored write APIs broken by a webview migration with 7 proxy endpoints over a signed-header trust path; added a path-parameter validation pipe with Jest tests and traced/recovered a production identity-verification outage",
+      },
+      {
+        ko: "연동 서버(NestJS) 수정 — 종료된 이벤트에 푸시가 예약되던 문제를 DB 시간 기준 판정으로 고치고 회귀 방지",
+        en: "Integration server (NestJS) fixes — stopped push reservations for ended events by judging with DB time, with regression safeguards",
+      },
+      {
+        ko: "페이지별 PV 측정 — BigQuery 앱·웹 데이터를 합산해 193개 페이지의 사용량을 분류(스냅샷 방식으로 스캔 비용 절감)하고, 데이터 근거로 레거시 페이지 정리",
+        en: "Per-page PV measurement — merged app and web BigQuery data to classify usage of 193 pages (snapshot design to cut scan cost) and removed legacy pages based on the data",
+      },
+      {
+        ko: "CDN·인프라 — 사이트맵 오리진을 S3로 직결해 응답 크기 760KB→28KB, CDN 캐시 헤더 오류 수정",
+        en: "CDN & infra — pointed the sitemap origin directly at S3 (760KB→28KB per response) and fixed swapped CDN cache headers",
+      },
+    ],
+  },
+];
+
 export const resumeProjects: ResumeProject[] = [
+  {
+    slug: "dearbloom",
+    title: "DearBloom",
+    period: { start: "2026.07", end: "2026.08" },
+    summary: {
+      ko: "졸업 스냅 작가와 고객을 연결하는 매칭 서비스. 비로그인 탐색 페이지는 Astro SSR, 로그인 이후 앱은 Next.js로 분리한 모노레포 구조로 운영 중.",
+      en: "A matching service connecting graduation-snap photographers with customers. Runs as a monorepo split into Astro SSR for public browsing pages and Next.js for the logged-in app.",
+    },
+    role: {
+      ko: "프론트엔드 개발 · 초기 구조 설계 (FE 2인 팀)",
+      en: "Frontend & initial architecture (2-person FE team)",
+    },
+    responsibilities: [
+      {
+        ko: "모노레포 초기 구조 설계 — pnpm·Turborepo 기반으로 비로그인 SEO 페이지(Astro)와 로그인 이후 앱(Next.js)을 분리하고, Astro를 게이트웨이로 두어 /app 경로를 Next로 프록시. 같은 도메인 쿠키로 인증 공유",
+        en: "Initial monorepo architecture — pnpm + Turborepo; split public SEO pages (Astro) from the logged-in app (Next.js), with Astro as the gateway proxying /app to Next and auth shared via same-domain cookies",
+      },
+      {
+        ko: "탐색·상세 페이지 Astro SSR — 서버 HTML에 목록이 담기도록 렌더링하고, 사용자별 저장 상태가 담긴 응답의 캐시 금지, 저장 요청 409 멱등 처리",
+        en: "Astro SSR browse/detail pages — server HTML includes the listings; disabled caching for responses with per-user saved state and made save requests idempotent on 409",
+      },
+      {
+        ko: "BFF 엔드포인트 — httpOnly 쿠키를 서버에서 읽어 백엔드에 Bearer 토큰으로 전달, presigned URL 기반 S3 업로드",
+        en: "BFF endpoints — read httpOnly cookies on the server and forward them to the backend as Bearer tokens; S3 uploads via presigned URLs",
+      },
+    ],
+    techStack: [
+      "Astro",
+      "Next.js",
+      "TypeScript",
+      "Turborepo",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    liveUrl: "https://dearbloom.co.kr",
+    codeUrl: "https://github.com/Central-MakeUs/dearbloom-client",
+    gradient: "from-pink-400/30 via-rose-300/20 to-fuchsia-400/30",
+  },
+  {
+    slug: "ourtoday",
+    title: "OurToday",
+    period: { start: "2026.05" },
+    summary: {
+      ko: "연인이 3줄 일기와 사진으로 관계를 기록하는 아카이빙 서비스. 백엔드를 혼자 설계하고 구축.",
+      en: "An archiving service where couples record their relationship with three-line diaries and photos. Designed and built the backend solo.",
+    },
+    role: {
+      ko: "백엔드 개발 (1인)",
+      en: "Backend (solo)",
+    },
+    responsibilities: [
+      {
+        ko: "기획 문서로 MVP 범위와 제외 기능을 정의하고 API 명세·ERD 설계",
+        en: "Defined MVP scope and deliberate non-goals in a planning doc; designed the API spec and ERD",
+      },
+      {
+        ko: "Spring Security + 카카오 OAuth2 + JWT 인증 — 인증은 서버가 책임지고 클라이언트는 JWT만 받는 구조, OAuth 콜백 세션 정책 문제 해결",
+        en: "Spring Security + Kakao OAuth2 + JWT — the server owns auth and clients only receive JWTs; resolved the OAuth callback session-policy issue",
+      },
+      {
+        ko: "EC2 + Docker Compose 배포 — DB 포트 외부 비공개, Vercel rewrite로 HTTPS 도메인 제공",
+        en: "EC2 + Docker Compose deployment — DB port kept private; HTTPS domain served through Vercel rewrites",
+      },
+    ],
+    techStack: [
+      "Java 21",
+      "Spring Boot 3",
+      "Spring Security",
+      "JPA",
+      "PostgreSQL",
+      "Docker",
+      "AWS EC2",
+    ],
+    gradient: "from-sky-400/30 via-indigo-300/20 to-violet-400/30",
+  },
   {
     slug: "loopin",
     title: "Loopin",

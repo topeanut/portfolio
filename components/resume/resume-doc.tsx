@@ -15,6 +15,7 @@ import {
   education,
   resumeProjects,
   otherExperiences,
+  workExperiences,
 } from "@/lib/resume";
 import type { Locale } from "@/i18n/routing";
 
@@ -161,6 +162,7 @@ const SECTION_LABELS: Record<string, { ko: string; en: string }> = {
   skills: { ko: "기술", en: "Skills" },
   certifications: { ko: "자격증", en: "Certifications" },
   education: { ko: "학력", en: "Education" },
+  work: { ko: "경력", en: "Work Experience" },
   projects: { ko: "프로젝트", en: "Projects" },
   otherExperience: { ko: "기타 경력 및 경험", en: "Other Experience" },
 };
@@ -267,6 +269,27 @@ export function ResumeDoc({ locale }: { locale: Locale }) {
                   ({formatPeriod(e.period, present)})
                 </Text>
               </Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            {SECTION_LABELS.work[locale]}
+          </Text>
+          {workExperiences.map((w) => (
+            <View key={w.slug} style={styles.experienceItem} wrap={false}>
+              <View style={styles.experienceHeader}>
+                <Text style={styles.experienceTitle}>
+                  {w.company[locale]} — {w.role[locale]}
+                </Text>
+                <Text style={styles.projectPeriod}>
+                  {formatPeriod(w.period, present)}
+                </Text>
+              </View>
+              {w.bullets.map((b, i) => (
+                <Bullet key={i}>{b[locale]}</Bullet>
+              ))}
             </View>
           ))}
         </View>

@@ -22,12 +22,13 @@ import {
   otherExperiences,
   profile,
   skillGroups,
+  workExperiences as resumeWorkExperiences,
 } from "./resume";
 
 export type Skill = {
   name: string;
   icon: LucideIcon;
-  category: "frontend" | "cowork";
+  category: "frontend" | "backend" | "cowork";
 };
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -57,16 +58,16 @@ export type ExperienceItem = {
   role: { ko: string; en: string };
   period: { start: string; end?: string };
   kind: "work" | "education";
+  bullets?: { ko: string; en: string }[];
 };
 
-const workExperiences: ExperienceItem[] = [
-  {
-    company: { ko: "전능아이티", en: "전능아이티" },
-    role: { ko: "프론트엔드 엔지니어", en: "Frontend Engineer" },
-    period: { start: "2025.04" },
-    kind: "work",
-  },
-];
+const workExperiences: ExperienceItem[] = resumeWorkExperiences.map((w) => ({
+  company: w.company,
+  role: w.role,
+  period: w.period,
+  kind: "work",
+  bullets: w.bullets,
+}));
 
 export const experiences: ExperienceItem[] = [
   ...workExperiences,

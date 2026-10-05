@@ -21,7 +21,7 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
-    "role": "Frontend Engineer",
+    "role": "Software Engineer",
     "name": "Jeonghan Lee.",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
@@ -41,6 +41,7 @@
     "subtitle": "Skills",
     "categories": {
       "frontend": "Frontend",
+      "backend": "Backend & Infra",
       "cowork": "Co-work"
     }
   },

@@ -20,8 +20,8 @@ export async function GET(request: NextRequest) {
 
   const baseName =
     locale === "ko"
-      ? `${profile.name.ko}_이력서_프론트엔드`
-      : `${profile.name.en.replace(/\s+/g, "_")}_Resume_Frontend`;
+      ? `${profile.name.ko}_이력서`
+      : `${profile.name.en.replace(/\s+/g, "_")}_Resume`;
 
   return new NextResponse(new Uint8Array(buffer), {
     status: 200,
