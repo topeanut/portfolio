@@ -93,6 +93,7 @@ export const skillGroups: SkillGroup[] = [
       "JavaScript",
       "React",
       "Next.js",
+      "Astro",
       "Tailwind CSS",
       "shadcn/ui",
       "Zustand",
@@ -110,6 +111,8 @@ export const skillGroups: SkillGroup[] = [
       "Docker",
       "AWS",
       "BigQuery",
+      "GA4",
+      "Python",
     ],
   },
   {
@@ -147,16 +150,24 @@ export const workExperiences: WorkExperience[] = [
         en: "Auth-delegating API proxy — restored write APIs broken by a webview migration with 7 proxy endpoints over a signed-header trust path; added a path-parameter validation pipe with Jest tests and traced/recovered a production identity-verification outage",
       },
       {
-        ko: "연동 서버(NestJS) 수정 — 종료된 이벤트에 푸시가 예약되던 문제를 DB 시간 기준 판정으로 고치고 회귀 방지",
-        en: "Integration server (NestJS) fixes — stopped push reservations for ended events by judging with DB time, with regression safeguards",
+        ko: "Next.js → Astro 점진 이관 — 레거시 웹앱의 지면 10여 개(목록·상세·상담신청·인앱 홈 등)를 Astro SSR로 옮기고 지면마다 레거시를 바로 걷어내 약 3.1만 줄 삭제. 구 URL은 301/308로 흡수해 검색 자산을 지키고, BigQuery로 193개 페이지 사용량을 분류해 정리 근거를 마련. 사이트맵 오리진을 S3로 직결(응답 760KB→28KB)",
+        en: "Incremental Next.js → Astro migration — moved 10+ legacy surfaces (lists, details, consultation form, in-app home) to Astro SSR and deleted each legacy page right after its move (~31k lines removed); kept search equity with 301/308 redirects, classified usage of 193 pages in BigQuery to justify cleanup, and pointed the sitemap origin at S3 (760KB→28KB)",
       },
       {
-        ko: "페이지별 PV 측정 — BigQuery 앱·웹 데이터를 합산해 193개 페이지의 사용량을 분류(스냅샷 방식으로 스캔 비용 절감)하고, 데이터 근거로 레거시 페이지 정리",
-        en: "Per-page PV measurement — merged app and web BigQuery data to classify usage of 193 pages (snapshot design to cut scan cost) and removed legacy pages based on the data",
+        ko: "측정 품질 — 앱 웹뷰 화면이 웹 GA에도 잡히던 이중 집계(웹 세션의 약 77%)를 찾아 앱/웹 측정을 분리하고, Astro 이관 후 page_view 누락을 주간 점검으로 발견해 당일 복구",
+        en: "Measurement quality — found that in-app webview screens were double-counted in web GA (~77% of web sessions) and split app/web tracking; caught a page_view gap after the Astro migration through weekly checks and fixed it the same day",
       },
       {
-        ko: "CDN·인프라 — 사이트맵 오리진을 S3로 직결해 응답 크기 760KB→28KB, CDN 캐시 헤더 오류 수정",
-        en: "CDN & infra — pointed the sitemap origin directly at S3 (760KB→28KB per response) and fixed swapped CDN cache headers",
+        ko: "사내 지표 플랫폼 — 동료가 만든 Evidence 대시보드를 이어받아 이상치 자동 점검·알려진 결손 관리·SQL CI·Google 로그인을 추가하고, 운영·기획팀용 대시보드 7종 이상을 Prefect 적재와 함께 구축(운영팀 주간회의 지표로 사용)",
+        en: "Internal metrics platform — took over a colleague's Evidence dashboards and added automatic anomaly checks, known-gap tracking, SQL CI and Google sign-in; built 7+ dashboards for ops and product with Prefect pipelines (used in the ops team's weekly meeting)",
+      },
+      {
+        ko: "성능 — 병원찾기 중복 API 호출을 걷어내 첫 요청 병원 수 3,000→500, 지역 선택 모달을 지연 로딩으로 분리해 초기 번들에서 216KB 제거",
+        en: "Performance — removed duplicate hospital-search API calls (first request 3,000→500 hospitals) and lazy-loaded the region picker, cutting 216KB from the initial bundle",
+      },
+      {
+        ko: "신규 웹뷰 설계 — PC 앱(WebView2)의 후기·Q&A·예약 탭을 신규 레포부터 설계해 Storybook을 도입하고 네이티브↔웹 브릿지 구현, 상용 출시",
+        en: "New webview from scratch — designed the reviews/Q&A/booking tabs of a desktop app (WebView2) from a fresh repo, introduced Storybook, built the native↔web bridge, and shipped to production",
       },
     ],
   },
@@ -206,12 +217,12 @@ export const resumeProjects: ResumeProject[] = [
     title: "OurToday",
     period: { start: "2026.05" },
     summary: {
-      ko: "연인이 3줄 일기와 사진으로 관계를 기록하는 아카이빙 서비스. 백엔드를 혼자 설계하고 구축.",
-      en: "An archiving service where couples record their relationship with three-line diaries and photos. Designed and built the backend solo.",
+      ko: "연인이 3줄 일기와 사진으로 관계를 기록하는 아카이빙 서비스. 기획부터 백엔드·웹·앱·배포까지 혼자 설계하고 구축.",
+      en: "An archiving service where couples record their relationship with three-line diaries and photos. Planned, designed and built the backend, web, apps and deployment solo.",
     },
     role: {
-      ko: "백엔드 개발 (1인)",
-      en: "Backend (solo)",
+      ko: "풀스택 개발 (1인)",
+      en: "Full-stack (solo)",
     },
     responsibilities: [
       {
@@ -223,8 +234,16 @@ export const resumeProjects: ResumeProject[] = [
         en: "Spring Security + Kakao OAuth2 + JWT — the server owns auth and clients only receive JWTs; resolved the OAuth callback session-policy issue",
       },
       {
-        ko: "EC2 + Docker Compose 배포 — DB 포트 외부 비공개, Vercel rewrite로 HTTPS 도메인 제공",
-        en: "EC2 + Docker Compose deployment — DB port kept private; HTTPS domain served through Vercel rewrites",
+        ko: "도메인 API — 3줄 일기 CRUD·이모지 반응, 커플 초대코드, 버킷리스트 공동 편집, 캘린더 메모, 작년 오늘, 데이터 내보내기(zip)·탈퇴 정리. 이미지는 비공개 버킷 + presigned URL",
+        en: "Domain APIs — three-line diary CRUD with emoji reactions, couple invite codes, shared bucket list, calendar notes, on-this-day, zip data export and account cleanup; images in a private bucket via presigned URLs",
+      },
+      {
+        ko: "Next.js 웹(로그인·온보딩·피드·작성·버킷·캘린더·마이페이지)과 Android/iOS 웹뷰 앱(공유·사진 선택·카카오 앱 연동 브릿지), Astro 랜딩(SEO·약관)",
+        en: "Next.js web (login, onboarding, feed, writing, bucket list, calendar, my page), Android/iOS webview apps (share, photo picker, Kakao app bridge), and an Astro landing page (SEO, terms)",
+      },
+      {
+        ko: "Docker Compose 배포 — DB 포트 외부 비공개, GHCR 이미지 자동 빌드·서버 pull 배포, DB 백업 스크립트, Vercel rewrite로 HTTPS 도메인 제공",
+        en: "Docker Compose deployment — DB port kept private, GHCR image builds with pull-based deploys, DB backup scripts, HTTPS domain via Vercel rewrites",
       },
     ],
     techStack: [
@@ -234,9 +253,40 @@ export const resumeProjects: ResumeProject[] = [
       "JPA",
       "PostgreSQL",
       "Docker",
-      "AWS EC2",
+      "Next.js",
+      "Astro",
     ],
     gradient: "from-sky-400/30 via-indigo-300/20 to-violet-400/30",
+  },
+  {
+    slug: "agent-skills",
+    title: "agent-skills",
+    period: { start: "2026.06" },
+    summary: {
+      ko: "실무 개발 흐름을 AI 에이전트가 반복 수행하도록 만든 SKILL.md 스킬 모음. 회사에서 쓰던 워크플로를 범용화해 공개하고 마켓플레이스에 등록.",
+      en: "A collection of SKILL.md skills that let AI coding agents repeat everyday engineering workflows. Generalized the workflows I use at work, open-sourced them, and listed them on a marketplace.",
+    },
+    role: {
+      ko: "개인 프로젝트 (1인)",
+      en: "Personal project (solo)",
+    },
+    responsibilities: [
+      {
+        ko: "공개 스킬 5종 — 브라우저 MCP 선택, 변경분 테스트 제안, PR 리뷰 백그라운드 폴링·대응, 붙여넣기용 Slack 글, 승인 게이트가 있는 PR 생성",
+        en: "5 public skills — browser MCP selection, test proposals for a change, background PR-review polling and handling, paste-ready Slack posts, and PR creation behind an approval gate",
+      },
+      {
+        ko: "이슈→PR 8단계 파이프라인(컨텍스트·계획·워크트리·구현·리뷰·테스트·배포·아카이브) 설계, 계획·배포 전 승인 게이트",
+        en: "Designed an 8-step issue-to-PR pipeline (context, plan, worktree, implement, review, test, ship, archive) with approval gates before planning and deploy",
+      },
+      {
+        ko: "범용 스킬과 회사별 값(conventions)을 분리하는 구조로 재사용성 확보, Agensi 마켓플레이스에 무료 5종 등록",
+        en: "Split generic skills from company-specific conventions for reuse; listed 5 free skills on the Agensi marketplace",
+      },
+    ],
+    techStack: ["SKILL.md", "Shell", "GitHub CLI", "MCP"],
+    codeUrl: "https://github.com/topeanut/agent-skills",
+    gradient: "from-emerald-400/30 via-teal-300/20 to-cyan-400/30",
   },
   {
     slug: "loopin",
@@ -329,8 +379,8 @@ export const resumeProjects: ResumeProject[] = [
     title: "ValanSe",
     period: { start: "2025.05" },
     summary: {
-      ko: "밸런스 게임에 진심인 사람들을 위한 플랫폼. 카카오 로그인 기반으로 밸런스 게임을 만들고 투표하고 댓글로 공유하는 서비스 — Google Play 안드로이드 웹뷰 배포 진행.",
-      en: "A platform for balance-game enthusiasts — create, vote, comment, and share. Kakao OAuth, shipped as an Android webview on Google Play.",
+      ko: "밸런스 게임에 진심인 사람들을 위한 플랫폼. 카카오 로그인 기반으로 밸런스 게임을 만들고 투표하고 댓글로 공유하는 서비스 — 웹과 Google Play 안드로이드 앱으로 운영 중.",
+      en: "A platform for balance-game enthusiasts — create, vote, comment, and share. Kakao OAuth; live on the web and as an Android app on Google Play.",
     },
     role: {
       ko: "팀장 / 프론트엔드 파트장 / 기획 (FE 2인 팀)",
@@ -357,6 +407,22 @@ export const resumeProjects: ResumeProject[] = [
         ko: "공통 컴포넌트 — 로딩 스피너, 뒤로가기 모달, 댓글, 전체보기 버튼 등",
         en: "Built shared components — loading spinner, back-confirm modal, comments, see-all buttons, etc.",
       },
+      {
+        ko: "SEO·AI 검색(GEO) 고도화 — 투표 상세·목록 SSR, JSON-LD(WebSite·DiscussionForumPosting·BreadcrumbList), 게임별 OG 이미지 자동 생성, canonical·sitemap 정비, /llms.txt·IndexNow·FAQ 페이지, 주제 추천 페이지",
+        en: "SEO & GEO — SSR for poll details and lists, JSON-LD (WebSite, DiscussionForumPosting, BreadcrumbList), auto-generated per-game OG images, canonical/sitemap fixes, /llms.txt, IndexNow, FAQ and topic-recommendation pages",
+      },
+      {
+        ko: "CMS 모노레포 구축 — 투표·칭호 관리, page-view 수집 기반 MAU 통계, AI 콘텐츠 검수 페이지",
+        en: "CMS in a monorepo — poll/title management, MAU stats from collected page views, and an AI content-moderation page",
+      },
+      {
+        ko: "디자인 시스템 개편 — 토큰 레이어와 Figma 사양 기반 공용 컴포넌트(Button·Chip·Dropdown·Popup·TextField 등), PC 전용 레이아웃",
+        en: "Design-system overhaul — token layer and Figma-spec shared components (Button, Chip, Dropdown, Popup, TextField…), plus dedicated PC layouts",
+      },
+      {
+        ko: "성능·접근성 — 홈 60초 ISR, 가변 폰트 subset, 댓글 SSR로 CLS 제거, 텍스트 대비 4.5:1 확보, 앱 다운로드 랜딩·네이티브 공유 브릿지",
+        en: "Performance & a11y — 60s ISR home, variable-font subsetting, comment SSR to remove CLS, 4.5:1 text contrast; app download landing and native share bridge",
+      },
     ],
     techStack: [
       "Next.js",
@@ -367,6 +433,7 @@ export const resumeProjects: ResumeProject[] = [
       "Radix UI",
       "Chart.js",
       "Storybook",
+      "GA4",
     ],
     liveUrl: "https://valanse.kr",
     codeUrl: "https://github.com/ValanSee/ValanSe_Web",
