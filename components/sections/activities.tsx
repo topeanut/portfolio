@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { FadeIn } from "@/components/motion/fade-in";
 import { activities, smallProjects, type Activity } from "@/lib/data";
@@ -65,6 +66,17 @@ function CardListSection({
               transition={{ type: "spring", stiffness: 280, damping: 22 }}
               className="rounded-2xl border border-foreground/10 bg-card/60 p-6 backdrop-blur"
             >
+              {a.cover && (
+                <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-foreground/10">
+                  <Image
+                    src={a.cover}
+                    alt={a.name[locale]}
+                    fill
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+              )}
               <p className="font-mono text-xs text-muted">
                 {a.period.start} — {a.period.end ?? tExp("present")}
               </p>

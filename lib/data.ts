@@ -86,6 +86,7 @@ export type Activity = {
   bullets: { ko: string; en: string }[];
   techStack?: string[];
   url?: string;
+  cover?: string;
 };
 
 export const smallProjects: Activity[] = resumeSmallProjects.map((p) => ({
@@ -94,6 +95,7 @@ export const smallProjects: Activity[] = resumeSmallProjects.map((p) => ({
   bullets: p.bullets,
   techStack: p.techStack,
   url: p.url,
+  cover: p.cover,
 }));
 
 export const activities: Activity[] = otherExperiences.map((o) => ({

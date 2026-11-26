@@ -8,7 +8,7 @@
     "smallProjects": "소규모",
     "experience": "경력",
     "activities": "활동",
-    "contact": "연락"
+    "contact": "Contact"
   },
   "theme": {
     "light": "라이트 모드",
@@ -71,7 +71,7 @@
     "body": "부트캠프와 동아리 활동에서 얻은 학습과 협업 경험."
   },
   "contact": {
-    "title": "연락",
+    "title": "Contact",
     "subtitle": "Get in touch",
     "body": "이야기 나누고 싶은 것이 있다면 편하게 연락 주세요.",
     "email": "이메일",
