@@ -62,6 +62,7 @@ export type SmallProject = {
   bullets: LocalizedString[];
   techStack?: string[];
   url?: string;
+  cover?: string;
 };
 
 export type OtherExperience = {
@@ -223,6 +224,30 @@ export const resumeProjects: ResumeProject[] = [
     ],
     liveUrl: "https://dearbloom.co.kr",
     codeUrl: "https://github.com/Central-MakeUs/dearbloom-client",
+    cover: "/projects/dearbloom-snaps.png",
+    gallery: [
+      {
+        src: "/projects/dearbloom-snaps.png",
+        caption: {
+          ko: "탐색 — 필터와 졸업 스냅 작품 목록(Astro SSR)",
+          en: "Browse — filters and graduation-snap listings (Astro SSR)",
+        },
+      },
+      {
+        src: "/projects/dearbloom-detail.png",
+        caption: {
+          ko: "작품 상세 — 가격·패키지와 문의하기",
+          en: "Snap detail — pricing, packages and inquiry",
+        },
+      },
+      {
+        src: "/projects/dearbloom-for-artists.png",
+        caption: {
+          ko: "작가 사전등록 랜딩 — 오픈 혜택과 사전등록",
+          en: "Photographer pre-registration landing",
+        },
+      },
+    ],
     gradient: "from-pink-400/30 via-rose-300/20 to-fuchsia-400/30",
   },
   {
@@ -275,6 +300,44 @@ export const resumeProjects: ResumeProject[] = [
       "Astro",
     ],
     gradient: "from-sky-400/30 via-indigo-300/20 to-violet-400/30",
+    cover: "/projects/ourtoday-feed.png",
+    gallery: [
+      {
+        src: "/projects/ourtoday-feed.png",
+        caption: {
+          ko: "피드 — 작년 오늘, 사진·위치가 담긴 3줄 기록",
+          en: "Feed — on-this-day and three-line posts with photos and places",
+        },
+      },
+      {
+        src: "/projects/ourtoday-calendar.png",
+        caption: {
+          ko: "캘린더 — 기록과 메모를 날짜별로",
+          en: "Calendar — posts and notes by date",
+        },
+      },
+      {
+        src: "/projects/ourtoday-bucket.png",
+        caption: {
+          ko: "버킷리스트 — 함께 이룬 것 진행률",
+          en: "Bucket list — shared progress",
+        },
+      },
+      {
+        src: "/projects/ourtoday-me.png",
+        caption: {
+          ko: "마이 — 커플 정보, 둘의 기록 통계, 알림 설정",
+          en: "My page — couple info, stats and notification settings",
+        },
+      },
+      {
+        src: "/projects/ourtoday-login.png",
+        caption: {
+          ko: "로그인 — 카카오·Apple 로그인",
+          en: "Sign-in — Kakao and Apple",
+        },
+      },
+    ],
   },
   {
     slug: "agent-skills",
@@ -462,64 +525,50 @@ export const resumeProjects: ResumeProject[] = [
       {
         src: "/projects/valanse-home.png",
         caption: {
-          ko: "홈 — 저울 일러스트와 카테고리 진입",
-          en: "Home — scale illustration and category entry",
+          ko: "홈 — 뜨고 있는 밸런스, 주제 바로가기, 새로 올라온 밸런스",
+          en: "Home — trending poll, topic shortcuts and newest polls",
         },
       },
       {
         src: "/projects/valanse-balanse.png",
         caption: {
-          ko: "밸런스 탭 — 인기 토픽, 카테고리 필터, 무한스크롤 카드",
-          en: "Balanse tab — hot topics, category filter, infinite-scroll cards",
+          ko: "밸런스 탭 — 카테고리 필터와 카드 리스트",
+          en: "Balanse tab — category filter and card list",
         },
       },
       {
-        src: "/projects/valanse-poll-detail.png",
+        src: "/projects/valanse-poll.png",
         caption: {
-          ko: "투표 결과 — 남자/여자 분포",
-          en: "Poll result — male/female distribution",
+          ko: "투표 상세 — 선택지, 베스트 댓글, 댓글",
+          en: "Poll detail — options, best comment and comments",
         },
       },
       {
-        src: "/projects/valanse-poll-detail-age.png",
+        src: "/projects/valanse-topics.png",
         caption: {
-          ko: "투표 결과 — 나이대별 분포",
-          en: "Poll result — by age group",
-        },
-      },
-      {
-        src: "/projects/valanse-poll-detail-mbti.png",
-        caption: {
-          ko: "투표 결과 — MBTI별 분포",
-          en: "Poll result — by MBTI",
-        },
-      },
-      {
-        src: "/projects/valanse-hot.png",
-        caption: {
-          ko: "오늘의 핫이슈 — 인기 투표 큐레이션",
-          en: "Today's hot issue — popular poll curation",
-        },
-      },
-      {
-        src: "/projects/valanse-point.png",
-        caption: {
-          ko: "포인트 — 보유 포인트·적립/사용 내역",
-          en: "Points — balance and history",
-        },
-      },
-      {
-        src: "/projects/valanse-titles.png",
-        caption: {
-          ko: "칭호 — 티어별 보유/잠금 표시",
-          en: "Titles — owned and locked by tier",
+          ko: "주제 추천 — 지금 인기 있는 밸런스게임 주제",
+          en: "Topic picks — trending balance-game topics",
         },
       },
       {
         src: "/projects/valanse-create.png",
         caption: {
-          ko: "밸런스 게임 만들기 — 질문·썰·선택지 폼",
-          en: "Create — question, story, and options form",
+          ko: "밸런스 게임 만들기 — 질문·썰·주제·선택지 폼",
+          en: "Create a poll — question, story, topic and options",
+        },
+      },
+      {
+        src: "/projects/valanse-my.png",
+        caption: {
+          ko: "마이 — 활동 요약, 포인트, 칭호, 계정 관리",
+          en: "My page — activity, points, title and account settings",
+        },
+      },
+      {
+        src: "/projects/valanse-titles.png",
+        caption: {
+          ko: "칭호 — 보유/잠금 칭호와 장착",
+          en: "Titles — owned and locked titles",
         },
       },
     ],
@@ -915,6 +964,7 @@ export const smallProjects: SmallProject[] = [
     ],
     techStack: ["JavaScript", "pdf.js", "IndexedDB", "PWA"],
     url: "https://apps.apple.com/kr/app/id6831163579",
+    cover: "/projects/penote-pdf.jpg",
   },
   {
     slug: "paper",
