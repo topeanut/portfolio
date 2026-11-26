@@ -5,6 +5,7 @@
     "about": "소개",
     "skills": "기술",
     "projects": "프로젝트",
+    "smallProjects": "소규모",
     "experience": "경력",
     "activities": "활동",
     "contact": "연락"
@@ -58,6 +59,11 @@
     "title": "경력 · 학력",
     "subtitle": "Experience",
     "present": "현재"
+  },
+  "smallProjects": {
+    "title": "소규모 프로젝트",
+    "subtitle": "Small Projects",
+    "body": "혼자 만들어 본 작은 앱과 도구."
   },
   "activities": {
     "title": "기타 경력 및 경험",

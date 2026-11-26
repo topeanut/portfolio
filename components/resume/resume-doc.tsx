@@ -15,6 +15,7 @@ import {
   education,
   resumeProjects,
   otherExperiences,
+  smallProjects,
   workExperiences,
 } from "@/lib/resume";
 import type { Locale } from "@/i18n/routing";
@@ -164,6 +165,7 @@ const SECTION_LABELS: Record<string, { ko: string; en: string }> = {
   education: { ko: "학력", en: "Education" },
   work: { ko: "경력", en: "Work Experience" },
   projects: { ko: "프로젝트", en: "Projects" },
+  smallProjects: { ko: "소규모 프로젝트", en: "Small Projects" },
   otherExperience: { ko: "기타 경력 및 경험", en: "Other Experience" },
 };
 
@@ -341,6 +343,33 @@ export function ResumeDoc({ locale }: { locale: Locale }) {
                   <Link src={p.appUrl} style={styles.link}>
                     {p.appUrl.replace("https://", "")}
                   </Link>
+                </Text>
+              )}
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            {SECTION_LABELS.smallProjects[locale]}
+          </Text>
+          {smallProjects.map((p) => (
+            <View key={p.slug} style={styles.experienceItem} wrap={false}>
+              <View style={styles.experienceHeader}>
+                <Text style={styles.experienceTitle}>{p.title[locale]}</Text>
+                <Text style={styles.projectPeriod}>
+                  {formatPeriod(p.period, present)}
+                </Text>
+              </View>
+              {p.bullets.map((b, i) => (
+                <Bullet key={i}>{b[locale]}</Bullet>
+              ))}
+              {p.techStack && (
+                <Text style={styles.techLine}>
+                  <Text style={styles.techLabel}>
+                    {locale === "ko" ? "사용 기술: " : "Tech: "}
+                  </Text>
+                  {p.techStack.join(", ")}
                 </Text>
               )}
             </View>

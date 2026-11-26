@@ -5,6 +5,7 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
+    "smallProjects": "Small Projects",
     "experience": "Experience",
     "activities": "Activities",
     "contact": "Contact"
@@ -58,6 +59,11 @@
     "title": "Experience · Education",
     "subtitle": "Experience",
     "present": "Present"
+  },
+  "smallProjects": {
+    "title": "Small Projects",
+    "subtitle": "Small Projects",
+    "body": "Small apps and tools I built on my own."
   },
   "activities": {
     "title": "Other Experience",

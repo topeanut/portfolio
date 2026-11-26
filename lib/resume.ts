@@ -55,6 +55,15 @@ export type WorkExperience = {
   bullets: LocalizedString[];
 };
 
+export type SmallProject = {
+  slug: string;
+  title: LocalizedString;
+  period: { start: string; end?: string };
+  bullets: LocalizedString[];
+  techStack?: string[];
+  url?: string;
+};
+
 export type OtherExperience = {
   slug: string;
   title: LocalizedString;
@@ -883,6 +892,28 @@ export const resumeProjects: ResumeProject[] = [
         },
       },
     ],
+  },
+];
+
+export const smallProjects: SmallProject[] = [
+  {
+    slug: "paper",
+    title: {
+      ko: "Paper — 광고 없는 문서 뷰어·에디터",
+      en: "Paper — ad-free document viewer & editor",
+    },
+    period: { start: "2026.11" },
+    bullets: [
+      {
+        ko: "React Native(Expo)로 iOS·Android 동시 지원. 광고·추적·계정 없이 모든 처리를 기기 안에서 수행(배포 빌드는 인터넷 권한 제거)",
+        en: "One React Native (Expo) codebase for iOS and Android; no ads, tracking or accounts — everything runs on device (release builds drop the internet permission)",
+      },
+      {
+        ko: "PDF 펜·형광펜 주석과 페이지 회전·삭제·순서 변경을 원본 텍스트·벡터를 보존한 채 저장, DOCX 문단·XLSX 셀 편집 시 기존 서식 보존",
+        en: "PDF pen/highlighter annotations and page rotate/delete/reorder saved while keeping the original text and vectors; DOCX paragraph and XLSX cell edits preserve existing formatting",
+      },
+    ],
+    techStack: ["React Native", "Expo", "TypeScript", "Skia", "pdf-lib"],
   },
 ];
 
