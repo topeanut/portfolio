@@ -5,7 +5,7 @@ import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
 import { Experience } from "@/components/sections/experience";
-import { Activities } from "@/components/sections/activities";
+import { Activities, SmallProjects } from "@/components/sections/activities";
 import { Contact } from "@/components/sections/contact";
 
 export default async function Home({
@@ -24,6 +24,7 @@ export default async function Home({
       <Suspense fallback={null}>
         <Projects />
       </Suspense>
+      <SmallProjects />
       <Experience />
       <Activities />
       <Contact />

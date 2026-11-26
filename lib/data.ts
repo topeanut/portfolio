@@ -21,6 +21,7 @@ import {
   education,
   otherExperiences,
   profile,
+  smallProjects as resumeSmallProjects,
   skillGroups,
   workExperiences as resumeWorkExperiences,
 } from "./resume";
@@ -83,7 +84,17 @@ export type Activity = {
   name: { ko: string; en: string };
   period: { start: string; end?: string };
   bullets: { ko: string; en: string }[];
+  techStack?: string[];
+  url?: string;
 };
+
+export const smallProjects: Activity[] = resumeSmallProjects.map((p) => ({
+  name: p.title,
+  period: p.period,
+  bullets: p.bullets,
+  techStack: p.techStack,
+  url: p.url,
+}));
 
 export const activities: Activity[] = otherExperiences.map((o) => ({
   name: o.title,

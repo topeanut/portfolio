@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { Sun, Moon, Monitor } from "lucide-react";
@@ -18,9 +18,13 @@ const ICONS: Record<Mode, typeof Sun> = {
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const t = useTranslations("theme");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  // true on the client, false during SSR — avoids a hydration mismatch
+  // without calling setState inside an effect.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   const current: Mode = mounted ? ((theme as Mode) ?? "system") : "system";
   const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];

@@ -12,6 +12,7 @@ const SECTIONS = [
   "about",
   "skills",
   "projects",
+  "smallProjects",
   "experience",
   "activities",
   "contact",

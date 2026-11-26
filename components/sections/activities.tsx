@@ -3,18 +3,32 @@
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { FadeIn } from "@/components/motion/fade-in";
-import { activities } from "@/lib/data";
+import { activities, smallProjects, type Activity } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function Activities() {
-  const t = useTranslations("activities");
+  return <CardListSection id="activities" items={activities} />;
+}
+
+export function SmallProjects() {
+  return <CardListSection id="smallProjects" items={smallProjects} />;
+}
+
+function CardListSection({
+  id,
+  items,
+}: {
+  id: "activities" | "smallProjects";
+  items: Activity[];
+}) {
+  const t = useTranslations(id);
   const tExp = useTranslations("experience");
   const locale = useLocale() as Locale;
 
   return (
-    <section id="activities" className="relative px-4 py-24 md:px-8 md:py-32">
+    <section id={id} className="relative px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <p className="font-mono text-sm uppercase tracking-widest text-accent">
@@ -36,7 +50,7 @@ export function Activities() {
           }}
           className="mt-10 grid gap-4 md:grid-cols-2"
         >
-          {activities.map((a) => (
+          {items.map((a) => (
             <motion.li
               key={a.name.ko}
               variants={{
@@ -63,6 +77,21 @@ export function Activities() {
                   </li>
                 ))}
               </ul>
+              {a.techStack && (
+                <p className="mt-3 font-mono text-xs text-muted">
+                  {a.techStack.join(" · ")}
+                </p>
+              )}
+              {a.url && (
+                <a
+                  href={a.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block font-mono text-xs text-accent hover:underline"
+                >
+                  {a.url.replace("https://", "")}
+                </a>
+              )}
             </motion.li>
           ))}
         </motion.ul>
