@@ -158,8 +158,8 @@ export const workExperiences: WorkExperience[] = [
         en: "Measurement quality — found that in-app webview screens were double-counted in web GA (~77% of web sessions) and split app/web tracking; caught a page_view gap after the Astro migration through weekly checks and fixed it the same day",
       },
       {
-        ko: "사내 지표 플랫폼 — 동료가 만든 Evidence 대시보드를 이어받아 이상치 자동 점검·알려진 결손 관리·SQL CI·Google 로그인을 추가하고, 운영·기획팀용 대시보드 7종 이상을 Prefect 적재와 함께 구축(운영팀 주간회의 지표로 사용)",
-        en: "Internal metrics platform — took over a colleague's Evidence dashboards and added automatic anomaly checks, known-gap tracking, SQL CI and Google sign-in; built 7+ dashboards for ops and product with Prefect pipelines (used in the ops team's weekly meeting)",
+        ko: "사내 지표 플랫폼 — 동료가 만든 Evidence 대시보드를 이어받아 이상치 자동 점검·알려진 결손 관리·SQL CI·지표가 쓰는 GA 이벤트를 지운 PR을 잡는 CI·Google 로그인을 추가하고, 운영·기획팀용 대시보드 7종 이상을 Prefect 적재와 함께 구축(운영팀 주간회의 지표로 사용)",
+        en: "Internal metrics platform — took over a colleague's Evidence dashboards and added automatic anomaly checks, known-gap tracking, SQL CI, a CI check that flags PRs removing GA events the metrics depend on, and Google sign-in; built 7+ dashboards for ops and product with Prefect pipelines (used in the ops team's weekly meeting)",
       },
       {
         ko: "성능 — 병원찾기 중복 API 호출을 걷어내 첫 요청 병원 수 3,000→500, 지역 선택 모달을 지연 로딩으로 분리해 초기 번들에서 216KB 제거",
@@ -177,7 +177,7 @@ export const resumeProjects: ResumeProject[] = [
   {
     slug: "dearbloom",
     title: "DearBloom",
-    period: { start: "2026.07", end: "2026.08" },
+    period: { start: "2026.07" },
     summary: {
       ko: "졸업 스냅 작가와 고객을 연결하는 매칭 서비스. 비로그인 탐색 페이지는 Astro SSR, 로그인 이후 앱은 Next.js로 분리한 모노레포 구조로 운영 중.",
       en: "A matching service connecting graduation-snap photographers with customers. Runs as a monorepo split into Astro SSR for public browsing pages and Next.js for the logged-in app.",
@@ -198,6 +198,10 @@ export const resumeProjects: ResumeProject[] = [
       {
         ko: "BFF 엔드포인트 — httpOnly 쿠키를 서버에서 읽어 백엔드에 Bearer 토큰으로 전달, presigned URL 기반 S3 업로드",
         en: "BFF endpoints — read httpOnly cookies on the server and forward them to the backend as Bearer tokens; S3 uploads via presigned URLs",
+      },
+      {
+        ko: "작가 사전등록 랜딩·관리 화면 — Astro 랜딩과 신청 API(Neon Postgres, 동의 필수·허니팟·IP별 요청 제한), 목록·상태·메모·CSV 내보내기 관리 화면, FAQ 구조화 데이터",
+        en: "Photographer pre-registration landing and admin — Astro landing with an application API (Neon Postgres, required consent, honeypot, per-IP rate limit), an admin view with status, notes and CSV export, and FAQ structured data",
       },
     ],
     techStack: [
@@ -242,8 +246,12 @@ export const resumeProjects: ResumeProject[] = [
         en: "Next.js web (login, onboarding, feed, writing, bucket list, calendar, my page), Android/iOS webview apps (share, photo picker, Kakao app bridge), and an Astro landing page (SEO, terms)",
       },
       {
-        ko: "Docker Compose 배포 — DB 포트 외부 비공개, GHCR 이미지 자동 빌드·서버 pull 배포, DB 백업 스크립트, Vercel rewrite로 HTTPS 도메인 제공",
-        en: "Docker Compose deployment — DB port kept private, GHCR image builds with pull-based deploys, DB backup scripts, HTTPS domain via Vercel rewrites",
+        ko: "Android/iOS FCM 푸시 알림(상대 기록·반응·작년 오늘·커플 연결), 카카오맵 위치 첨부(기록·캘린더), 프로필 사진(카카오 사진 자동 반영)",
+        en: "FCM push notifications on Android/iOS (partner's posts, reactions, on-this-day, couple linking), Kakao Map location attachments (posts, calendar), and profile photos (auto-filled from Kakao)",
+      },
+      {
+        ko: "AWS → Oracle Cloud 무료 ARM VM 이관으로 인프라비 0원 — Docker Compose(DB 포트 외부 비공개), GHCR 이미지 자동 빌드·서버 pull 배포, DB 백업 스크립트, 사진은 Oracle Object Storage(S3 호환), Vercel rewrite로 HTTPS 도메인 제공",
+        en: "Moved from AWS to a free Oracle Cloud ARM VM for zero infra cost — Docker Compose (DB port kept private), GHCR image builds with pull-based deploys, DB backup scripts, photos on Oracle Object Storage (S3-compatible), HTTPS domain via Vercel rewrites",
       },
     ],
     techStack: [
@@ -253,6 +261,7 @@ export const resumeProjects: ResumeProject[] = [
       "JPA",
       "PostgreSQL",
       "Docker",
+      "Oracle Cloud",
       "Next.js",
       "Astro",
     ],
@@ -379,8 +388,8 @@ export const resumeProjects: ResumeProject[] = [
     title: "ValanSe",
     period: { start: "2025.05" },
     summary: {
-      ko: "밸런스 게임에 진심인 사람들을 위한 플랫폼. 카카오 로그인 기반으로 밸런스 게임을 만들고 투표하고 댓글로 공유하는 서비스 — 웹과 Google Play 안드로이드 앱으로 운영 중.",
-      en: "A platform for balance-game enthusiasts — create, vote, comment, and share. Kakao OAuth; live on the web and as an Android app on Google Play.",
+      ko: "밸런스 게임에 진심인 사람들을 위한 플랫폼. 카카오 로그인 기반으로 밸런스 게임을 만들고 투표하고 댓글로 공유하는 서비스 — 웹과 Google Play 안드로이드 앱으로 운영 중이며, App Store 출시 진행 중.",
+      en: "A platform for balance-game enthusiasts — create, vote, comment, and share. Kakao OAuth; live on the web and as an Android app on Google Play, with an App Store release in progress.",
     },
     role: {
       ko: "팀장 / 프론트엔드 파트장 / 기획 (FE 2인 팀)",
@@ -412,8 +421,8 @@ export const resumeProjects: ResumeProject[] = [
         en: "SEO & GEO — SSR for poll details and lists, JSON-LD (WebSite, DiscussionForumPosting, BreadcrumbList), auto-generated per-game OG images, canonical/sitemap fixes, /llms.txt, IndexNow, FAQ and topic-recommendation pages",
       },
       {
-        ko: "CMS 모노레포 구축 — 투표·칭호 관리, page-view 수집 기반 MAU 통계, AI 콘텐츠 검수 페이지",
-        en: "CMS in a monorepo — poll/title management, MAU stats from collected page views, and an AI content-moderation page",
+        ko: "CMS 모노레포 구축 — 투표·칭호 관리, page-view 수집 기반 MAU 통계, GA4 사용 현황·Play 설치·로그인 전환율 통계, 비로그인 투표 시도 측정, AI 콘텐츠 검수, 검색 키워드를 AI 게시글 생성에 반영",
+        en: "CMS in a monorepo — poll/title management, MAU stats from collected page views, GA4 usage, Play installs and login conversion stats, logged-out vote-attempt tracking, AI content moderation, and search keywords fed into AI post generation",
       },
       {
         ko: "디자인 시스템 개편 — 토큰 레이어와 Figma 사양 기반 공용 컴포넌트(Button·Chip·Dropdown·Popup·TextField 등), PC 전용 레이아웃",
