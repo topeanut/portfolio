@@ -82,6 +82,16 @@ function CardListSection({
                   {a.techStack.join(" · ")}
                 </p>
               )}
+              {a.url && (
+                <a
+                  href={a.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block font-mono text-xs text-accent hover:underline"
+                >
+                  {a.url.replace("https://", "")}
+                </a>
+              )}
             </motion.li>
           ))}
         </motion.ul>

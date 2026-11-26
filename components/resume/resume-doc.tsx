@@ -372,6 +372,14 @@ export function ResumeDoc({ locale }: { locale: Locale }) {
                   {p.techStack.join(", ")}
                 </Text>
               )}
+              {p.url && (
+                <Text style={styles.techLine}>
+                  <Text style={styles.techLabel}>App: </Text>
+                  <Link src={p.url} style={styles.link}>
+                    {p.url.replace("https://", "")}
+                  </Link>
+                </Text>
+              )}
             </View>
           ))}
         </View>

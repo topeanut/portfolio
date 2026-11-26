@@ -897,6 +897,26 @@ export const resumeProjects: ResumeProject[] = [
 
 export const smallProjects: SmallProject[] = [
   {
+    slug: "penote",
+    title: {
+      ko: "Penote — 아이패드 필기 앱 (App Store 출시)",
+      en: "Penote — iPad note-taking app (on the App Store)",
+    },
+    period: { start: "2026.10" },
+    bullets: [
+      {
+        ko: "광고·결제·회원가입 없는 필기 앱. 필압을 살린 벡터 펜, 손바닥 무시(펜슬만 인식), PDF 위 필기와 필기 포함 PDF 내보내기, 대용량 스캔 PDF 필기 시 멈춤 해결",
+        en: "Note-taking with no ads, payments or sign-up — pressure-sensitive vector ink, palm rejection (pencil-only input), writing on PDFs and exporting annotated PDFs, and no freezes on large scanned PDFs",
+      },
+      {
+        ko: "녹음과 필기 동기화(필기를 탭하면 그 시점부터 재생), 화면 분할, Notability .note 형식을 분석해 가져오기 구현. 모든 데이터는 기기에만 저장",
+        en: "Audio synced to ink (tap a stroke to play from that moment), split view, and a Notability .note importer built from reverse-engineering the format; all data stays on device",
+      },
+    ],
+    techStack: ["JavaScript", "pdf.js", "IndexedDB", "PWA"],
+    url: "https://apps.apple.com/kr/app/id6831163579",
+  },
+  {
     slug: "paper",
     title: {
       ko: "Paper — 광고 없는 문서 뷰어·에디터",
