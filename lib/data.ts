@@ -12,6 +12,7 @@ import {
   Server,
   Mail,
   FileText,
+  PenLine,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
@@ -111,7 +112,7 @@ export const certifications: CertificationItem[] = resumeCertifications.map(
 );
 
 export type ContactLink = {
-  label: "email" | "github" | "resume";
+  label: "email" | "github" | "blog" | "resume";
   href: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   hint?: string;
@@ -125,5 +126,6 @@ export const contacts: ContactLink[] = [
     icon: GithubIcon,
     hint: profile.github.label,
   },
+  { label: "blog", href: profile.blog.href, icon: PenLine, hint: profile.blog.label },
   { label: "resume", href: "/api/resume?lang=ko", icon: FileText },
 ];

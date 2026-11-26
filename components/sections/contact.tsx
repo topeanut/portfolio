@@ -34,7 +34,7 @@ export function Contact() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } },
           }}
-          className="mt-10 grid gap-3 sm:grid-cols-3"
+          className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
         >
           {contacts.map(({ label, href, icon: Icon, hint }) => {
             const finalHref = label === "resume" ? `/api/resume?lang=${locale}` : href;

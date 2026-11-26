@@ -173,6 +173,7 @@ const HEADER_LABELS: Record<string, { ko: string; en: string }> = {
   phone: { ko: "Mobile", en: "Mobile" },
   email: { ko: "Email", en: "Email" },
   github: { ko: "GitHub", en: "GitHub" },
+  blog: { ko: "Blog", en: "Blog" },
 };
 
 function formatPeriod(p: { start: string; end?: string }, present: string) {
@@ -223,6 +224,14 @@ export function ResumeDoc({ locale }: { locale: Locale }) {
               </Text>
               <Link src={profile.github.href} style={styles.link}>
                 {profile.github.label}
+              </Link>
+            </View>
+            <View style={styles.contactRow}>
+              <Text style={styles.contactLabel}>
+                {HEADER_LABELS.blog[locale]}
+              </Text>
+              <Link src={profile.blog.href} style={styles.link}>
+                {profile.blog.label}
               </Link>
             </View>
           </View>

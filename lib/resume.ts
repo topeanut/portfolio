@@ -6,6 +6,7 @@ export type ResumeProfile = {
   phone: string;
   email: string;
   github: { label: string; href: string };
+  blog: { label: string; href: string };
   introduction: LocalizedString[];
 };
 
@@ -78,6 +79,7 @@ export const profile: ResumeProfile = {
   phone: "+82 10-2748-1648",
   email: "ljhh1648@gmail.com",
   github: { label: "github.com/topeanut", href: "https://github.com/topeanut" },
+  blog: { label: "fidcod.tistory.com", href: "https://fidcod.tistory.com/" },
   introduction: [
     {
       ko: "웹 프론트엔드에서 시작해 API 서버, 인증, 인프라, 데이터 집계까지 범위를 넓혀 온 소프트웨어 엔지니어입니다. 다양한 서비스의 기획·개발·배포를 경험했고, 필요에 따라 파트장을 겸하며 팀을 이끌었습니다.",
